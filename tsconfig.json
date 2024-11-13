@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src", // new seteaza directorul pentru fisierele ts
+    "outDir": "./dist", // new seteaza directorul pentru fisierelejs
+    "allowJs": false, // Permite compilatorului TypeScript să proceseze fișiere JavaScript. Acest lucru poate fi util dacă migrezi un proiect scris în JavaScript și îl rescrii în TypeScript. După ce migrarea este finalizată, această setare este de obicei setată la false
+    "allowSyntheticDefaultImports": true, // Funcționează împreună cu esModuleInterop și îți permite să previi erorile care apar în timpul compilării din cauza incompatibilităților dintre SystemJS și CommonJS. Această setare se aplică tipurilor.
+    "emitDecoratorMetadata": true, // Această setare, utilizată împreună cu experimentalDecorators, adaugă metadate la decoratoare.
+    "esModuleInterop": true, // Permite ca modulele CommonJS să fie importate ca și cum ar fi module ES6. Acest lucru înseamnă că, dacă avem o bibliotecă care utilizează CommonJS, va trebui să scriem astfel:import * as express from 'express';Cu esModuleInterop putem importa module într-un mod mai natural pentru ES6:import express from 'express';
+    "experimentalDecorators": true, // Atunci când acest parametru este activat, TypeScript va permite utilizarea decoratoarelor în codul tău.
+    "lib": ["dom", "ES2021"], // Determină ce biblioteci trebuie utilizate. Dacă transmitem o matrice goală la lib, nici măcar console.log nu va fi disponibil în codul nostru. În lib, trebuie să se specifice versiunea minimă necesară de JavaScript. De exemplu, ["ES2021"]
+    "module": "es2020", // Definește sistemul de module care trebuie utilizat. commonjs este sistemul de module standard pentru Node.js. Dar ES2020 sau ES2022 este mai potrivit pentru dezvoltarea pe partea de client.
+    "moduleResolution": "node", // Definește strategia de rezoluție a modulelor. Sunt disponibile două valori: “node” și “classic”. Deoarece pachetele noastre sunt instalate prin npm, node este cea mai bună alegere.
+    "preserveConstEnums": true,
+    "skipLibCheck": true, // Dezactivează verificarea tipurilor în bibliotecile node_modules. De obicei, se setează la true pentru a accelera compilarea.
+    "strictNullChecks": true, //  TypeScript nu-ți va permite să folosești valori nule sau nedefinite acolo unde se așteaptă un obiect. Acest lucru ajută la prevenirea multor erori comune, deoarece null și undefined sunt principalele surse de erori în JavaScript.
+    "target": "es2019", //  Definește versiunea ECMAScript utilizată pentru a genera codul sursă. De exemplu, dacă specificăm es5, fișierul compilat nu va avea comenzile const și let și alte caracteristici noi care au fost adăugate în es6, dar codul va fi acceptat de browserele mai vechi.
+    "sourceMap": true // Un Source Map este un fișier pe care browser-ul îl utilizează pentru a afișa codul transpilat sau minificat înapoi în codul sursă.Acest lucru îți permite să vezi codul sursă în instrumentele de dezvoltare ale browser-ului, chiar dacă lucrezi cu o versiune compilată a codului. Companiile folosesc adesea sisteme precum Sentry, care urmăresc erorile utilizatorilor. Cu toate acestea, codul din producție este de obicei minificat, iar source maps permit să vezi codul normal și lizibil.În contextul TypeScript, pentru a genera source maps, trebuie să adaugi "sourceMap": true în secțiunea "compilerOptions". Acest lucru va genera fișiere .map împreună cu fișierele JavaScript compilate. Aceste fișiere conțin informații care fac legătura între codul minificat sau transpilat și fișierele sursă. !!! sepoate vedea in folderul dist ca fiecare fisier.js are un fisier.js.map care conține o hartă pentru a converti codul înapoi în forma sa originală.
+  },
+  "include": ["**/*.ts"] // Definește ce fișiere trebuie incluse în procesul de compilare. De exemplu, poți include toate fișierele TypeScript folosind ["/*.ts", "/*.tsx"].
+  // baseUrl: Dacă proiectul tău are o structură complexă și nu vrei să scrii ruta completă, cum ar fi app/javascript/react/Component, în timpul importului, poți folosi baseUrl pentru a simplifica importul. De exemplu, react/Component. În acest caz, baseUrl ar fi app/javascript.
+}
